@@ -19,6 +19,7 @@ FROM nginx:alpine
 
 # Копируем собранные статические файлы из предыдущего этапа
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/images /usr/share/nginx/html/images
 
 EXPOSE 80
 
