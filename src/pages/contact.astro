@@ -1,7 +1,121 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Contact";
+import Social from "../components/Social.astro";
+
+const pageTitle = "Contact | ";
 ---
+
 <BaseLayout pageTitle={pageTitle}>
-  <!-- Добавлять сюда -->
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Contact</h2>
+
+    <p class="hero-subtitle">
+      Feel free to reach out for collaboration, project discussions or just a quick chat.
+    </p>
+
+    <p class="hero-subtitle">
+      I am open to DevOps, infrastructure and automation-related opportunities.
+    </p>
+  </section>
+
+  <!-- CONTACT CARDS -->
+  <section class="contact">
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <h3>Telegram</h3>
+        <p class="contact-desc">Fastest way to reach me</p>
+        <Social platform="telegram" username="StasTroshin" />
+      </div>
+
+      <div class="contact-card">
+        <h3>GitHub</h3>
+        <p class="contact-desc">My code and projects</p>
+        <Social platform="github" username="Stanislav22401" />
+      </div>
+
+      <div class="contact-card">
+        <h3>LinkedIn</h3>
+        <p class="contact-desc">Professional profile</p>
+        <Social platform="linkedin" username="stanislav-troshin" />
+      </div>
+
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+/* ===== HERO (same as index) ===== */
+.hero {
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #475569;
+  max-width: 70ch;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== CONTACT GRID ===== */
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ===== CARD (aligned with project/about styles) ===== */
+.contact-card {
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -10px rgba(0,0,0,0.15);
+}
+
+.contact-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.contact-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+}
+
+/* ===== DARK MODE ===== */
+html.dark .hero-subtitle {
+  color: #94a3b8;
+}
+
+html.dark .contact-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+html.dark .contact-desc {
+  color: #94a3b8;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 640px) {
+  .contact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style>

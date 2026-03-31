@@ -1,7 +1,187 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = "Projects";
+
+const pageTitle = "Projects | ";
+
+const projects = [
+  {
+    title: "Portfolio Website",
+    description: "Multi-page portfolio built with Astro. Focused on clean UI, performance and simplicity.",
+    image: "/images/portfolio.png",
+    github: "https://github.com/stanislav22401/portfolio",
+    live: "https://troshin.by",
+    tech: ["Astro", "HTML", "CSS"]
+  },
+
+  // Добавляешь новые проекты сюда
+  // {
+  //   title: "",
+  //   description: "",
+  //   image: "",
+  //   github: "",
+  //   live: "",
+  //   tech: []
+  // }
+];
 ---
+
 <BaseLayout pageTitle={pageTitle}>
-  <!-- Добавлять сюда -->
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Projects</h2>
+    <p class="hero-subtitle">
+      A selection of my work, including infrastructure, automation and web projects.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects">
+    <div class="project-list">
+      {projects.map(project => (
+        <div class="project-card">
+
+          <!-- IMAGE -->
+          <img
+            src={project.image}
+            alt={project.title}
+            class="project-image"
+          />
+
+          <!-- CONTENT -->
+          <div class="project-content">
+            <h3>{project.title}</h3>
+
+            <p class="project-description">
+              {project.description}
+            </p>
+
+            <!-- TECH -->
+            <div class="project-tech">
+              {project.tech.map(t => (
+                <span class="tech-tag">{t}</span>
+              ))}
+            </div>
+
+            <!-- LINKS -->
+            <div class="project-links">
+              <a href={project.github} target="_blank">GitHub</a>
+
+              {project.live && (
+                <a href={project.live} target="_blank">Live</a>
+              )}
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+/* ===== HERO (same as index) ===== */
+.hero {
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: #475569;
+  max-width: 70ch;
+}
+
+/* ===== PROJECT LIST ===== */
+.project-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ===== PROJECT CARD ===== */
+.project-card {
+  display: block;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -12px rgba(0,0,0,0.2);
+}
+
+/* ===== IMAGE ===== */
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== CONTENT ===== */
+.project-content {
+  padding: 1rem;
+}
+
+.project-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.project-description {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0.6rem;
+}
+
+/* ===== TECH TAGS ===== */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.tech-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+/* ===== LINKS ===== */
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+/* ===== DARK MODE ===== */
+html.dark .hero-subtitle {
+  color: #94a3b8;
+}
+
+html.dark .project-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+html.dark .project-description {
+  color: #94a3b8;
+}
+
+html.dark .tech-tag {
+  background: #334155;
+  color: #e2e8f0;
+}
+</style>
