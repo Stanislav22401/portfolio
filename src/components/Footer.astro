@@ -1,0 +1,33 @@
+---
+import Social from "./Social.astro";
+---
+
+<footer>
+  <Social platform="telegram" username="StasTroshin" />
+  <Social platform="github" username="Stanislav22401" />
+  <Social platform="linkedin" username="stanislav-troshin" />
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  /* Тёмная тема */
+  html.dark footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 480px) {
+    footer {
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+  }
+</style>
